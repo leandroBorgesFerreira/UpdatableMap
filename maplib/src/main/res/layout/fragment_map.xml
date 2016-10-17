@@ -1,0 +1,64 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.MapWrapperFragment">
+
+    <fragment
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        class="com.google.android.gms.maps.SupportMapFragment"/>
+
+    <!-- Botões do mapa -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="8dp">
+
+        <ImageButton
+            android:id="@+id/btn_maps_self_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_self_position"
+            android:background="@drawable/button_shape_maps"
+            android:padding="5dp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_maps_self_position">
+
+            <ImageButton
+                android:id="@+id/btn_maps_zoom_plus"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_plus"
+                android:background="@drawable/button_shape_maps"
+                android:padding="5dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <ImageButton
+                android:id="@+id/btn_maps_zoom_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_minus"
+                android:background="@drawable/button_shape_maps"
+                android:padding="5dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

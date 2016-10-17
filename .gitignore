@@ -1,0 +1,40 @@
+# gitignore para projetos de Android
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/*/build
+/captures
+
+
+# built application files
+*.apk
+*.ap_
+
+# generated files
+bin/
+gen/
+
+
+# Android Studio
+.idea/
+/*/.idea/
+.gradle
+gradle/
+/*/local.properties
+/*/out
+/*/*/build
+/*/*/production
+*.iml
+*.iws
+*.ipr
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+## File-based project format
+*.ipr
+*.iws
+*.iml
+*~
+*.swp
