@@ -18,6 +18,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import br.com.simplepass.maplib.R;
@@ -77,9 +78,7 @@ public class MapWrapperFragment extends Fragment
 
             @Override
             public void onNext(Collection<Car> cars) {
-                for(Car car : cars){
-                    Log.d("Carro", "carro: " + car.toString());
-                }
+                updateMovingPoints(cars);
             }
         });
     }
@@ -89,12 +88,11 @@ public class MapWrapperFragment extends Fragment
         mSubscription.unsubscribe();
     }
 
+
     //ToDo: Aqui deve entrar subscribe!
     @Override
-    public void drawFixedPoints(Map<Long, ? extends MapPoint> mapPoints) {
-        for(Map.Entry<Long, ? extends MapPoint> entry : mapPoints.entrySet()) {
-            MapPoint mapPoint = entry.getValue();
-
+    public void drawFixedPoints(Iterable<? extends MapPoint> mapPoints) {
+        for(MapPoint mapPoint : mapPoints) {
             MapPoint pointOnMap = mFixedPointsMap.get(mapPoint.getVanId());
 
             if(pointOnMap == null){
@@ -119,9 +117,8 @@ public class MapWrapperFragment extends Fragment
 
     //ToDo: Aqui deve entrar subscribe!
     @Override
-    public void updateMovingPoints(Map<Long, ? extends MapPoint> movingPoints) {
-        for(Map.Entry<Long, ? extends MapPoint> entry : movingPoints.entrySet()) {
-            MapPoint mapPoint = entry.getValue();
+    public void updateMovingPoints(Iterable<? extends MapPoint> movingPoints) {
+        for(MapPoint mapPoint : movingPoints){
             MapPoint pointOnMap = mMovingPointsMap.get(mapPoint.getVanId());
 
             if(pointOnMap == null){
