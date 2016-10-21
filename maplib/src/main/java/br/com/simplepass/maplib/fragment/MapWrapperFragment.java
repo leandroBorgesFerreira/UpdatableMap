@@ -35,7 +35,11 @@ import rx.Observer;
 import rx.Subscription;
 
 /**
-
+ * Created by Leandro Ferreira.
+ *
+ * This is wapper on the GoogleMap fragment that draws map points out of the box. If you have an aplicativo
+ * that track cars or other vehicules (like the Uber) this class helps to update the position of the moving
+ * points.
  */
 public class MapWrapperFragment extends Fragment
         implements MapWrapper,
@@ -55,10 +59,22 @@ public class MapWrapperFragment extends Fragment
         // Required empty public constructor
     }
 
+    /**
+     * Set a map syncer to automatically connect with you API and retrieve the position of points.
+     *
+     * @param mMapSyncer
+     */
     public void setMapSyncer(MapSyncer<Car> mMapSyncer) {
         this.mMapSyncer = mMapSyncer;
     }
 
+    /**
+     * Once you have set the MapSyncer, you can call this method to obtain the updates. This lib is
+     * based on RxJava so the MapSyncer need to provide a observable so the MapWrapperFragment will subscripe
+     * to it.
+     *
+     * Note: If no MapSyncer was set, this method throws a IllegalStateException.
+     */
     @Override
     public void startUpdates() {
         if(mMapSyncer == null){
@@ -67,9 +83,7 @@ public class MapWrapperFragment extends Fragment
 
         mSubscription = mMapSyncer.getCarsObservable().subscribe(new Observer<Collection<Car>>() {
             @Override
-            public void onCompleted() {
-
-            }
+            public void onCompleted() {}
 
             @Override
             public void onError(Throwable e) {
@@ -83,13 +97,20 @@ public class MapWrapperFragment extends Fragment
         });
     }
 
+    /**
+     * Unsubscribe the Observable
+     */
     @Override
     public void stopUpdates() {
         mSubscription.unsubscribe();
     }
 
 
-    //ToDo: Aqui deve entrar subscribe!
+    /**
+     * Draw the fixed pois in the Map.
+     *
+     * @param mapPoints Iterable the received the mapPoints to be draw.
+     */
     @Override
     public void drawFixedPoints(Iterable<? extends MapPoint> mapPoints) {
         for(MapPoint mapPoint : mapPoints) {
@@ -115,7 +136,11 @@ public class MapWrapperFragment extends Fragment
         }
     }
 
-    //ToDo: Aqui deve entrar subscribe!
+    /**
+     * Update the positions of the movingPoints. If the MapPoints doenst exists yet, it gets created.
+     *
+     * @param movingPoints @param mapPoints Iterable the received the mapPoints to be draw or moved
+     */
     @Override
     public void updateMovingPoints(Iterable<? extends MapPoint> movingPoints) {
         for(MapPoint mapPoint : movingPoints){
@@ -143,14 +168,22 @@ public class MapWrapperFragment extends Fragment
 
     @Override
     public void updateMovingPoints(MapPoint mapPoint) {
-
+        //ToDo: Implement this!
     }
 
+    /**
+     *
+     * @return The GoogleMap that is being used by the MapWrappegFragment
+     */
     @Override
     public GoogleMap getGoogleMap() {
         return mGoogleMap;
     }
 
+    /**
+     * Callback when the map is done loading
+     * @param googleMap
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
@@ -158,7 +191,8 @@ public class MapWrapperFragment extends Fragment
         mWrapperListener.onMapReady();
     }
 
-    public static MapWrapperFragment newInstance(String param1, String param2) {
+
+    public static MapWrapperFragment newInstance() {
         return new MapWrapperFragment();
     }
 
@@ -170,6 +204,9 @@ public class MapWrapperFragment extends Fragment
         mFixedPointsMap = new HashMap<>();
     }
 
+    /**
+     * Initializes the map.
+     */
     private void mapInit(){
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);

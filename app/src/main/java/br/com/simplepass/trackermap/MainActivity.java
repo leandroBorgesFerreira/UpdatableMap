@@ -11,8 +11,8 @@ import br.com.simplepass.maplib.interfaces.MapPoint;
 import br.com.simplepass.maplib.interfaces.MapSyncer;
 import br.com.simplepass.maplib.interfaces.ProgressShower;
 import br.com.simplepass.maplib.interfaces.UpdatableMap;
-import br.com.simplepass.mapsyncerlib.conection.MapSync;
 import br.com.simplepass.maplib.interfaces.MapWrapperListener;
+import br.com.simplepass.mapsyncerlib.conection.MapSync;
 
 public class MainActivity extends AppCompatActivity implements
         MapWrapperListener,
