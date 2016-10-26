@@ -21,6 +21,15 @@ public class MainActivity extends AppCompatActivity implements
     MapWrapperFragment mMapWrapperFragment;
 
     @Override
+    public void onMapReady() {
+        mMapWrapperFragment =
+                (MapWrapperFragment) getSupportFragmentManager().findFragmentById(br.com.simplepass.trackermap.R.id.main_fragment_map);
+
+        mMapWrapperFragment.setMapSyncer(new MapSync());
+        mMapWrapperFragment.startUpdates();
+    }
+
+    @Override
     public void showProgress(boolean b) {
         if(b){
             Log.d("ShowProgress", "Mostra progresso!");
@@ -28,15 +37,6 @@ public class MainActivity extends AppCompatActivity implements
             Log.d("ShowProgress", "Não mostra progresso!");
         }
 
-    }
-
-    @Override
-    public void onMapReady() {
-        mMapWrapperFragment =
-                (MapWrapperFragment) getSupportFragmentManager().findFragmentById(br.com.simplepass.trackermap.R.id.main_fragment_map);
-
-        mMapWrapperFragment.setMapSyncer(new MapSync());
-        mMapWrapperFragment.startUpdates();
     }
 
     @Override

@@ -3,7 +3,6 @@ package br.com.simplepass.maplib.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import br.com.simplepass.maplib.R;
@@ -114,7 +112,7 @@ public class MapWrapperFragment extends Fragment
     @Override
     public void drawFixedPoints(Iterable<? extends MapPoint> mapPoints) {
         for(MapPoint mapPoint : mapPoints) {
-            MapPoint pointOnMap = mFixedPointsMap.get(mapPoint.getVanId());
+            MapPoint pointOnMap = mFixedPointsMap.get(mapPoint.getId());
 
             if(pointOnMap == null){
                 pointOnMap = mapPoint;
@@ -125,7 +123,7 @@ public class MapWrapperFragment extends Fragment
                         .position(latLng)
                         .title("Local Fixo")));
 
-                mFixedPointsMap.put(pointOnMap.getVanId(), pointOnMap);
+                mFixedPointsMap.put(pointOnMap.getId(), pointOnMap);
             } else{
                 Marker marker = pointOnMap.getMarker();
                 LatLng latLng = new LatLng(pointOnMap.getLatitude(), pointOnMap.getLongitude());
@@ -144,7 +142,7 @@ public class MapWrapperFragment extends Fragment
     @Override
     public void updateMovingPoints(Iterable<? extends MapPoint> movingPoints) {
         for(MapPoint mapPoint : movingPoints){
-            MapPoint pointOnMap = mMovingPointsMap.get(mapPoint.getVanId());
+            MapPoint pointOnMap = mMovingPointsMap.get(mapPoint.getId());
 
             if(pointOnMap == null){
                 pointOnMap = mapPoint;
@@ -155,7 +153,7 @@ public class MapWrapperFragment extends Fragment
                         .position(latLng)
                         .title("Isso é um carro")));
 
-                mMovingPointsMap.put(pointOnMap.getVanId(), pointOnMap);
+                mMovingPointsMap.put(pointOnMap.getId(), pointOnMap);
             } else{
                 Marker marker = pointOnMap.getMarker();
                 LatLng latLng = new LatLng(pointOnMap.getLatitude(), pointOnMap.getLongitude());

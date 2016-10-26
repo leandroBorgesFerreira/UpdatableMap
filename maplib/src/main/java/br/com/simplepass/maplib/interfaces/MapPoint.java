@@ -6,7 +6,7 @@ import com.google.android.gms.maps.model.Marker;
  * Created by hinovamobile on 12/09/16.
  */
 public interface MapPoint {
-    long getVanId();
+    long getId();
     double getLatitude();
     double getLongitude();
     void setLatitude(double latitude);

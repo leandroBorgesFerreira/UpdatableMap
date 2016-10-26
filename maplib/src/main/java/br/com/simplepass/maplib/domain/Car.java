@@ -30,7 +30,8 @@ public class Car implements MapPoint {
         this.marker = marker;
     }
 
-    public long getVanId() {
+    @Override
+    public long getId() {
         return vanId;
     }
 
@@ -47,6 +48,7 @@ public class Car implements MapPoint {
         this.latitude = latitude;
     }
 
+    @Override
     public double getLongitude() {
         return longitude;
     }
