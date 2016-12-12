@@ -1,4 +1,6 @@
 
+[![Build Status](https://travis-ci.org/leandroBorgesFerreira/UpdatableMap.svg?branch=master)](https://travis-ci.org/leandroBorgesFerreira/UpdatableMap) [ ![Download](https://api.bintray.com/packages/lehen01/tracking-points-map/UpdatableMap/images/download.svg) ](https://bintray.com/lehen01/tracking-points-map/UpdatableMap/_latestVersion)
+
 # UpdatableMap
 This is a MapWrapper on top of GoogleMap for developers build apps for track moving points (like Uber, Cabify, EasyTaxi...) more easily and with a better code design
 
@@ -97,7 +99,7 @@ But if you don't want to implement te MapSync, you can you you these methods:
 #Instalation
 
     dependencies {
-	    compile 'br.com.simplepass:tracking-points-map:0.8.0'
+	    compile 'br.com.simplepass:tracking-points-map:[latest version]
 		/* If you want to use Retrofit, use this */
 		compile 'com.squareup.retrofit2:retrofit:2.1.0'
 	    compile 'com.squareup.retrofit2:converter-gson:2.1.0'

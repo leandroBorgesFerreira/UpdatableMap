@@ -1,1 +1,1 @@
-include ':app', ':maplib', ':mapsyncerlib'
+include ':app', ':tracking-points-map', ':mapsyncerlib'
