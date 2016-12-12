@@ -20,7 +20,6 @@ gen/
 .idea/
 /*/.idea/
 .gradle
-gradle/
 /*/local.properties
 /*/out
 /*/*/build

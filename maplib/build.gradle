@@ -1,10 +1,10 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
 
-ext {
-    PUBLISH_GROUP_ID='br.com.simplepass'
-    PUBLISH_ARTIFACT_ID='tracking-points-map'
-    PUBLISH_VERSION='0.8.0'
-}
+//Bintray depends on this global variable to set the library version!
+version = '0.9.0'
+group = 'br.com.simplepass'
 
 android {
     compileSdkVersion 24
@@ -22,7 +22,92 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
 
+if (project.hasProperty("android")) { // Android libraries
+    task sourcesJar(type: Jar) {
+        classifier = 'sources'
+        from android.sourceSets.main.java.srcDirs
+    }
+
+    task javadoc(type: Javadoc) {
+        source = android.sourceSets.main.java.srcDirs
+        classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    }
+} else { // Java libraries
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            name 'UpdatableMap'
+            description 'Map for tracking apps (Like: Uber, Cabify...)'
+            url 'https://github.com/leandroBorgesFerreira/UpdatableMap'
+            inceptionYear '2016'
+
+            packaging 'aar'
+            groupId 'br.com.simplepass'
+            artifactId 'tracking-points-map'
+            version '0.9.0'
+
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+            scm {
+                connection 'https://github.com/leandroBorgesFerreira/UpdatableMap.git'
+                url 'https://github.com/leandroBorgesFerreira/UpdatableMap'
+
+            }
+            developers {
+                developer {
+                    name 'Leandro Borges Ferreira'
+                }
+            }
+        }
+    }
+}
+
+// Configure gradle-bintray-plugin (for publishing releases)
+bintray {
+    configurations = ['archives']
+
+    publish = true
+
+    pkg {
+        repo = 'tracking-points-map'
+        name = 'UpdatableMap'
+        userOrg = 'lehen01'
+        licenses = ['Apache-2.0']
+        labels = ['customview', 'fragment', 'map']
+        websiteUrl = 'https://github.com/leandroBorgesFerreira/UpdatableMap'
+        issueTrackerUrl = 'https://github.com/leandroBorgesFerreira/UpdatableMap/issues'
+        vcsUrl = 'https://github.com/leandroBorgesFerreira/UpdatableMap.git'
+        publicDownloadNumbers = true
+    }
+
+}
+
+if (project.hasProperty('bintrayUser') && project.hasProperty('bintrayKey')) {
+    bintray.user = project.bintrayUser
+    bintray.key = project.bintrayKey
 }
 
 dependencies {
@@ -34,5 +119,3 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'io.reactivex:rxjava:1.1.6'
 }
-
-apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'

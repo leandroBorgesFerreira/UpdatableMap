@@ -1,19 +1,15 @@
 package br.com.simplepass.mapsyncerlib.conection;
 
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import br.com.simplepass.maplib.domain.Car;
-import br.com.simplepass.maplib.interfaces.MapPoint;
 import br.com.simplepass.maplib.interfaces.MapSyncer;
 import br.com.simplepass.mapsyncerlib.retrofit.MapClient;
 import br.com.simplepass.mapsyncerlib.retrofit.ServiceGenerator;
 import rx.Observable;
-import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 

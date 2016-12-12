@@ -1,0 +1,20 @@
+language: android
+jdk: oraclejdk8
+sudo: false
+addons:
+  apt:
+    packages:
+    - lynx
+android:
+  components:
+  - platform-tools
+  - tools
+  - build-tools-24.0.1
+  - android-24
+  - extra-android-m2repository
+script:
+- ./gradlew -PbintrayUser="${bintrayUser}" -PbintrayKey="${bintrayKey}" build bintrayUpload --stacktrace --info
+env:
+  global:
+  - secure: lo593hl4OIcBGPJdFhgda8MOtle+N9ccigwUkQ89k5OJGb1i8EwZoXZDVqH7Yy990y4tNk9ABBWxAL1VDHCcLfD2ZsnVk5SqmUGk4qvhgLjUiJm1jqx53ffa8hOCEZ6VwNIZLq2D12fKoO0pvgMwOpnDgZqtyqycu6O3aMK50UWBudC4UcmTHTEpjEyebnmkLD7HnHv+WAvvpmMRCL6i853QiPWwW8W0+BwQC4aEoaUUN9t5adhQPCQb7uZviOmEqwVkWvSXaUz7hegetNCnuVUdrdu5EGAnW0fjLJqql2dfZ3lDd0aENuiAnnj2gditn6nvWJN8uUgKe0wNuMuewTeT0tglWW0ALOnUReod8qvAGPR08YAqdoyEdcBbEeIuX//GFmXRop/3o22KhClvzq2kgEXJV9WufWRgnoWUYcUQd5a5xP1VNsJHnbIuxspzX78Zr1mriRRLR+Ymz1gMsKIl15OY1+/pS+tWbheR3HZKE2aOST79mnGAQ1rgjD4NHmq65/J4soBafc/4SlC7qicv+usPk/4PnRYGXtUtGiSr7MsnHJ2G2niL550HH+YnLouda01okAH7nAyZooU6aa/gcxr1wglKhYOdN05Sf29QlvlWDmbXOqk5IpkI7o+cB/iLWrxbsj8VwE2ttyYEgft4GeOgMcfO6XTfe3yQDX4=
+  - secure: wD3jo7Jhl1AFAe06E14dpFF2Un88513LQc4KqWiN3K3yu+PBKxsEzdVjHJ69l1ZAnsf2jLpCUadQJSWZpOFAbcFsypQad0HopUDQPDTzvjmlpiHXNTL5EFwH86Ms9BJ7uAdsYZdqbLZf1RdkxA9WyarGBQTJ/8vU6hUtWI4LF+JDYj44XYMUA5j5DgqyEh6H/opqEdk8EnpXqeotler9FMTWIyf9byb6ng9G3W8AOMC8PgfBc54VpnaVaum08wXaRIj4wFyi/hZD/EGGDpSAR4PhCvVHbVWlLkFPB/rmoydVzTJYRTbNE903p9UqN+jWQZFEpC1ehjvHCxyBAS7M/uA5yF1dGkg3sbQdCiVDDEqoYsYLICqloskGALNh19rTFMU1gcUbUVC+PC5RdMnR+t4pO8jbCoagZVn5Ie+IldyLPQL+Ys5pnhYNs/WmYtKLXENnXn2soIlTERP0BV3haG4Hje5sd5Z3IzxgIoaa1RC4mDHKRCQ4Xx+hN/vPtSeZARODMyhsN528csMo4bx778KDhN/HH4eKPT21vtAsQhd+beQ/KE1yQ2r8ZmaVyXUn0ogss8riCEEKr+UDALOAaU9J39InK2yYvvkXoLY+gKvDhrJu9HXr5zEGQ5FRMNmeNnJpCoQBiUNRRFjp8cWYyNeyxbbo1+41KEQeagQaK2c=
