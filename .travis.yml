@@ -16,6 +16,7 @@ android:
   - extra-android-support
   - extra-google-google_play_services
 script:
+- build
 #- ./gradlew -PbintrayUser="${bintrayUser}" -PbintrayKey="${bintrayKey}" build bintrayUpload --stacktrace --info
 env:
   global:
