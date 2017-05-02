@@ -5,7 +5,7 @@
 This is a MapWrapper on top of GoogleMap for developers build apps for track moving points (like Uber, Cabify, EasyTaxi...) more easily and with a better code design
 
 # How to Use
-###1 - Include  de MapFragment
+### 1 - Include  de MapFragment
 Put the fragment in the activity layout.
 
 	    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -96,7 +96,7 @@ But if you don't want to implement te MapSync, you can you you these methods:
     
     void drawFixedPoints(Iterable<? extends MapPoint> points);
 
-#Instalation
+# Instalation
 
     dependencies {
 	    compile 'br.com.simplepass:tracking-points-map:[latest version]
@@ -111,4 +111,4 @@ But if you don't want to implement te MapSync, you can you you these methods:
 
 For bugs, feature requests, and discussion please use [GitHub Issues](https://github.com/leandroBorgesFerreira/UpdatableMap/issues)
 
-#Have Fun!
+# Have Fun!
