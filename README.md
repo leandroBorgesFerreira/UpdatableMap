@@ -8,18 +8,18 @@ This is a MapWrapper on top of GoogleMap for developers build apps for track mov
 ### 1 - Include  de MapFragment
 Put the fragment in the activity layout.
 
-	    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	    xmlns:tools="http://schemas.android.com/tools"
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"
-    tools:context="br.com.simplepass.trackermap.MainActivity">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	mlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context="br.com.simplepass.trackermap.MainActivity">
 
-    <fragment
-        android:id="@+id/main_fragment_map"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        class="br.com.simplepass.maplib.fragment.MapWrapperFragment"/>
-        </RelativeLayout>
+	    <fragment
+		android:id="@+id/main_fragment_map"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		class="br.com.simplepass.maplib.fragment.MapWrapperFragment"/>
+     </RelativeLayout>
 
 ### 2 - Implement the MapWrapperListener
 You activity mus implement MapWrapperListener
@@ -101,7 +101,7 @@ But if you don't want to implement te MapSync, you can you you these methods:
     dependencies {
 	    compile 'br.com.simplepass:tracking-points-map:[latest version]
 		/* If you want to use Retrofit, use this */
-		compile 'com.squareup.retrofit2:retrofit:2.1.0'
+	    compile 'com.squareup.retrofit2:retrofit:2.1.0'
 	    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
 	    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     }
