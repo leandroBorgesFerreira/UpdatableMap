@@ -16,7 +16,7 @@ android:
   - extra-android-support
   - extra-google-google_play_services
 script:
-- ./gradlew -PbintrayUser="${bintrayUser}" -PbintrayKey="${bintrayKey}" build bintrayUpload --stacktrace --info
+#- ./gradlew -PbintrayUser="${bintrayUser}" -PbintrayKey="${bintrayKey}" build bintrayUpload --stacktrace --info
 env:
   global:
   - secure: lo593hl4OIcBGPJdFhgda8MOtle+N9ccigwUkQ89k5OJGb1i8EwZoXZDVqH7Yy990y4tNk9ABBWxAL1VDHCcLfD2ZsnVk5SqmUGk4qvhgLjUiJm1jqx53ffa8hOCEZ6VwNIZLq2D12fKoO0pvgMwOpnDgZqtyqycu6O3aMK50UWBudC4UcmTHTEpjEyebnmkLD7HnHv+WAvvpmMRCL6i853QiPWwW8W0+BwQC4aEoaUUN9t5adhQPCQb7uZviOmEqwVkWvSXaUz7hegetNCnuVUdrdu5EGAnW0fjLJqql2dfZ3lDd0aENuiAnnj2gditn6nvWJN8uUgKe0wNuMuewTeT0tglWW0ALOnUReod8qvAGPR08YAqdoyEdcBbEeIuX//GFmXRop/3o22KhClvzq2kgEXJV9WufWRgnoWUYcUQd5a5xP1VNsJHnbIuxspzX78Zr1mriRRLR+Ymz1gMsKIl15OY1+/pS+tWbheR3HZKE2aOST79mnGAQ1rgjD4NHmq65/J4soBafc/4SlC7qicv+usPk/4PnRYGXtUtGiSr7MsnHJ2G2niL550HH+YnLouda01okAH7nAyZooU6aa/gcxr1wglKhYOdN05Sf29QlvlWDmbXOqk5IpkI7o+cB/iLWrxbsj8VwE2ttyYEgft4GeOgMcfO6XTfe3yQDX4=
